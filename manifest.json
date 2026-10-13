@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube GIF",
+  "version": "2026.10.13",
+  "author": "yuxie",
+  "description": "Search Tenor and drop animated GIFs straight into your YouTube comments and replies.",
+  "minimum_chrome_version": "111",
+  "icons": {
+    "128": "icon.png"
+  },
+  "host_permissions": ["https://tenor.com/*"],
+  "background": {
+    "service_worker": "sw.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["content.css"],
+      "matches": ["https://www.youtube.com/*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["main.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
